@@ -1,4 +1,7 @@
 import { defineConfig } from 'astro/config';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import vercel from '@astrojs/vercel/serverless';
+
 
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
@@ -12,7 +15,8 @@ export default defineConfig({
 		: `http://localhost:${DEV_PORT}`,
 	base: process.env.CI ? '/flowbite-astro-admin-dashboard' : undefined,
 
-	// output: 'server',
+		output: 'server',
+		adapter: vercel(),
 
 	/* Like Vercel, Netlify,… Mimicking for dev. server */
 	// trailingSlash: 'always',
